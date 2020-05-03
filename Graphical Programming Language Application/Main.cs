@@ -692,7 +692,53 @@ namespace Graphical_Programming_Language_Application
 
             }
 
-        
+
+            //======================================================== Loop ====================================================
+            else if (matchRepeat.Success)
+            {
+                try
+                {
+                    _repeatNo = int.Parse(matchRepeat.Groups[1].Value);
+
+                    //=================================================== Loop Shapes ====================================
+
+                    //Regex regexRepCircle = new Regex(@"circle radius (.*[\d]) by radius (.*[\d]) end");
+                    Regex regexRepCircle = new Regex(@"circle radius (.*[\d]) by (.*[\d]) end");
+                    //loop 4 circle radius 30 by 20 end
+                    Regex regexRepRectangle = new Regex(@"rectangle width (.*[\d]) height (.*[\d]) by width (.*[\d]) height (.*[\d]) end");
+                    //Loop 4 rectangle width 90 height 120 by width 20 height 20
+
+
+                    Match matchRepCircle = regexRepCircle.Match(rtxt_console.Text.ToLower());
+                    Match matchRepRectangle = regexRepRectangle.Match(rtxt_console.Text.ToLower());
+
+                    //================================================== loop Circle ================================================
+                    if (matchRepCircle.Success)
+                    {
+
+                        int _repeatAdd = 0;
+                        int _repeatAddConstant;
+                        _size1 = int.Parse(lbl_StartPosX.Text);
+                        _size2 = int.Parse(lbl_StartPosY.Text);
+                        _size3 = int.Parse(matchRepCircle.Groups[1].Value);
+                        _repeatAdd = int.Parse(matchRepCircle.Groups[2].Value);
+                        _repeatAddConstant = int.Parse(matchRepCircle.Groups[2].Value);
+
+                        ShapeFactory shapeFactory = new ShapeFactory();
+                        Shape c = shapeFactory.GetShape("circle");
+
+                        for (int i = 0; i < _repeatNo; i++)
+                        {
+
+                            c.set(texturestyle, bb, paintcolor, _size1, _size2, (_size3 + _repeatAdd), (_size3 + _repeatAdd));
+                            c.draw(g);
+                            _size1 = _size1 - (_repeatAddConstant / 2);
+                            _size2 = _size2 - (_repeatAddConstant / 2);
+                            _repeatAdd = _repeatAdd + _repeatAddConstant;
+
+
+                        }
+                    }
 
                     //=============================================== IF ELSE ==================================================
 
