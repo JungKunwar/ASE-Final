@@ -83,6 +83,7 @@
     <Compile Include="Rectangle.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="ShapeFactory.cs" />
+    <Compile Include="Triangle.cs" />
     <EmbeddedResource Include="Console.resx">
       <DependentUpon>Console.cs</DependentUpon>
     </EmbeddedResource>
