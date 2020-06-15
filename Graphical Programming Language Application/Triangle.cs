@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Graphical_Programming_Language_Application
 {
-    class Triangle : Shape
+    public class Triangle : Shape
     {
-        int xi1, yi1, xi2, yi2, xii1, yii1, xii2, yii2, xiii1, yiii1, xiii2, yiii2;
+        public int xi1, yi1, xi2, yi2, xii1, yii1, xii2, yii2, xiii1, yiii1, xiii2, yiii2;
         Color c1;
         int texturestyle;
         Brush bb;
@@ -47,7 +47,7 @@ namespace Graphical_Programming_Language_Application
             this.yi2 = list[3];
 
             this.xii1 = list[4];
-            this.yii1 = list[5];
+            this.yii1 = list[5]; 
             this.xii2 = list[6];
             this.yii2 = list[7];
 
