@@ -738,6 +738,49 @@ namespace Graphical_Programming_Language_Application
 
 
                         }
+                    } 
+
+                    //=================================================== Loop Rectangle ==============================================
+                    else if (matchRepRectangle.Success)
+                    {
+                        try
+                        {
+                            int _repeatAddWidth = 0;
+                            int _repeatAddConstantWidth;
+                            int _repeatAddHeight = 0;
+                            int _repeatAddConstantHeight;
+                            //g = drawareapanel.CreateGraphics();
+                            _size1 = int.Parse(lbl_StartPosX.Text);
+                            _size2 = int.Parse(lbl_StartPosY.Text);
+                            _size3 = int.Parse(matchRepRectangle.Groups[1].Value);
+                            _size4 = int.Parse(matchRepRectangle.Groups[2].Value);
+
+                            _repeatAddWidth = int.Parse(matchRepRectangle.Groups[3].Value);
+                            _repeatAddConstantWidth = int.Parse(matchRepRectangle.Groups[3].Value);
+
+                            _repeatAddHeight = int.Parse(matchRepRectangle.Groups[4].Value);
+                            _repeatAddConstantHeight = int.Parse(matchRepRectangle.Groups[4].Value);
+
+                            ShapeFactory shapeFactory = new ShapeFactory();
+                            Shape c = shapeFactory.GetShape("rectangle");
+
+                            for (int i = 0; i < _repeatNo; i++)
+                            {
+                                c.set(texturestyle, bb, paintcolor, _size1, _size2, _size3 + _repeatAddWidth, _size4 + _repeatAddHeight);
+                                c.draw(g);
+                                _size1 = _size1 - (_repeatAddConstantWidth / 2);
+                                _size2 = _size2 - (_repeatAddConstantHeight / 2);
+                                _repeatAddWidth = _repeatAddWidth + _repeatAddConstantWidth;
+                                _repeatAddHeight = _repeatAddHeight + _repeatAddConstantHeight;
+                            }
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            rtxt_errors.AppendText(ex.Message + Environment.NewLine);
+                        }
+
                     }
 
                     //=============================================== IF ELSE ==================================================
